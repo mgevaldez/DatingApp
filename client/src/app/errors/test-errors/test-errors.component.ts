@@ -41,12 +41,12 @@ export class TestErrorsComponent {
     })
   }
 
-  get500ValidationError() {
+  get400ValidationError() {
     this.http.post(this.baseurl + 'account/register', {}).subscribe({
       next: response => console.log(response),
-      error: error => {
-        console.log(error);
-        this.validationErrors = error;
+      error: err => {
+        console.log(err);
+        this.validationErrors = err;
       }
     })
   }

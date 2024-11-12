@@ -8,12 +8,12 @@
     @if (validationErrors.length > 0) {
         <div class="row mt-5">
             <ul class="text-danger">
-                @for (error of validationErrors; track $index) {
-                  <li>{{ error }}</li>
+                @for (msg of validationErrors; track $index) {
+                  <li>{{ msg }}</li>
                 }
             </ul>
         </div>
     } @else {
-        <h1>No hay errores</h1>
+        <h1>No errors were found.</h1>
     }
 </div>

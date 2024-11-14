@@ -13,7 +13,7 @@
         <li class="nav-item">
           <a routerLink="/messages" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Messages</a>
         </li>
-      }  
+      }
       <li class="nav-item">
         <a routerLink="/errors" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Errors</a>
       </li>
@@ -21,7 +21,7 @@
 
     @if (accountService.currentUser()) {
       <div dropdown class="dropdown">
-        <a dropdownToggle class="dropdown-toggle text-ligth text-decoration-none">Welcome {{accountService.currentUser()?.username | titlecase}}</a>
+        <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">Welcome {{accountService.currentUser()?.username | titlecase}}</a>
         <div *dropdownMenu class="dropdown-menu">
           <a class="dropdown-item">Edit Profile</a>
           <div class="dropdown-divider"></div>
@@ -46,7 +46,6 @@
           name="password"
           [(ngModel)]="model.password"
           class="form-control me-2"
-          type="search"
           placeholder="Password"
           type="password"
         />

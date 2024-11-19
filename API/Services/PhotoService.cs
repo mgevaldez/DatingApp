@@ -26,7 +26,7 @@ public class PhotoService : IPhotoService
             {
                 File = new FileDescription(photo.FileName, stream),
                 Transformation = new Transformation().Height(500).Width(500).Crop("fill").Gravity("face"),
-                Folder = "da-net8"
+                Folder = "dating-app"
             };
             uploadResult = await _cloudinary.UploadAsync(uploadParams);
         }

@@ -86,6 +86,19 @@ export class PhotoEditorComponent implements OnInit {
       const updatedMember = {...this.member()};
       updatedMember.photos.push(photo);
       this.memberChanged.emit(updatedMember);
+
+      if (photo.isMain) {
+        const user = this.accountService.currentUser();
+        if (user) {
+          user.photoUrl = photo.url;
+          this.accountService.setCurrentUser(user);
+        }
+        updatedMember.photoUrl = photo.url;
+        updatedMember.photos.forEach(p => {
+          p.isMain = p.id === photo.id;
+        });
+        this.memberChanged.emit(updatedMember);
+      }
     }
   }
 }

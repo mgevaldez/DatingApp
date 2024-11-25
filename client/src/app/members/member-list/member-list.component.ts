@@ -5,7 +5,7 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {AccountService} from "../../_services/account.service";
 import {UserParams} from "../../_models/userParams";
 import {FormsModule} from "@angular/forms";
-import {ButtonRadioDirective, ButtonsModule} from "ngx-bootstrap/buttons";
+import {ButtonRadioDirective} from "ngx-bootstrap/buttons";
 
 @Component({
   selector: 'app-member-list',
@@ -23,6 +23,7 @@ export class MemberListComponent implements OnInit{
   private accountService = inject(AccountService);
   protected memberService = inject(MembersService);
   userParams = new UserParams(this.accountService.currentUser());
+
   genderList = [
     { value: 'male', label: 'Males' },
     { value: 'female', label: 'Females' },
@@ -35,17 +36,17 @@ export class MemberListComponent implements OnInit{
   }
 
   loadMembers() {
-    this.memberService.getMembers(this.userParams);
+    this.memberService.getMembers();
   }
 
   resetFilter() {
-    this.userParams = new UserParams(this.accountService.currentUser());
+    this.memberService.resetUserParams();
     this.loadMembers();
   }
 
   pageChanged(event: any): void {
-    if (this.userParams.pageNumber != event.page) {
-      this.userParams.pageNumber = event.page;
+    if (this.memberService.userParams().pageNumber != event.page) {
+      this.memberService.userParams().pageNumber = event.page;
       this.loadMembers();
     }
   }
